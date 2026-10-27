@@ -1,0 +1,89 @@
+:root {
+  /* UI-Farben */
+  --farbe-hintergrund: #faf8f5;
+  --farbe-flaeche: #ffffff;
+  --farbe-beige: #ede6db;
+  --farbe-linie: #e5e0d8;
+  --farbe-text: #2b2a28;
+  --farbe-text-sekundaer: #8a857d;
+  --farbe-akzent: #3a3835;
+  --farbe-fehler: #b86b5e;
+
+  /* Palette für Kategorien */
+  --farbe-salbei: #a8b5a2;
+  --farbe-sand: #d9c7a7;
+  --farbe-altrosa: #d4b5ae;
+  --farbe-nebelblau: #a9b7c0;
+  --farbe-taupe: #b8a99a;
+  --farbe-hellgrau: #c9c6c1;
+
+  /* Abstände im 4er-Raster */
+  --abstand-1: 4px;
+  --abstand-2: 8px;
+  --abstand-3: 12px;
+  --abstand-4: 16px;
+  --abstand-5: 20px;
+  --abstand-6: 24px;
+
+  /* Radien */
+  --radius-klein: 8px;
+  --radius-mittel: 12px;
+  --radius-gross: 16px;
+
+  /* Schrift */
+  --schrift: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --schrift-mini: 11px;
+  --schrift-klein: 12px;
+  --schrift-normal: 14px;
+  --schrift-titel: 17px;
+  --schrift-betrag: 32px;
+
+  /* Layout */
+  --breite-app: 480px;
+}
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--schrift);
+  color: var(--farbe-text);
+  background-color: var(--farbe-hintergrund);
+}
+
+h1, h2, p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--farbe-akzent);
+  outline-offset: 2px;
+}
+
+/* Nur für Screenreader sichtbar, z. B. die h1 der Startseite */
+.visuell-versteckt {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
