@@ -1,0 +1,48 @@
+.navigationsleiste {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: end;
+  width: 100%;
+  max-width: var(--breite-app);
+  /* env(): Abstand zur Gestenleiste moderner Smartphones */
+  padding: var(--abstand-3) var(--abstand-2) calc(var(--abstand-3) + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--farbe-linie);
+  background-color: var(--farbe-flaeche);
+}
+
+.navigationsleiste__eintrag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--abstand-1);
+  font-size: var(--schrift-mini);
+  color: var(--farbe-text-sekundaer);
+}
+
+.navigationsleiste__eintrag--aktiv {
+  color: var(--farbe-text);
+  font-weight: 600;
+}
+
+.navigationsleiste__plus {
+  display: grid;
+  place-items: center;
+  align-self: start;
+  justify-self: center;
+  width: 56px;
+  height: 56px;
+  /* Ragt über die Oberkante der Leiste hinaus */
+  margin-top: -38px;
+  border-radius: 50%;
+  background-color: var(--farbe-akzent);
+  color: var(--farbe-flaeche);
+}
+
+.navigationsleiste__plus svg {
+  width: 28px;
+  height: 28px;
+}

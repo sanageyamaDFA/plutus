@@ -1,0 +1,23 @@
+.ringdiagramm {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 2px;
+  width: min(220px, 60vw);
+  aspect-ratio: 1;
+  margin: var(--abstand-2) auto var(--abstand-6);
+  /* Platzhalter: Der beige Rand wird in Schritt 6 durch den echten Ring ersetzt */
+  border: 12px solid var(--farbe-beige);
+  border-radius: 50%;
+}
+
+.ringdiagramm__betrag {
+  font-size: var(--schrift-betrag);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.ringdiagramm__beschriftung {
+  font-size: var(--schrift-klein);
+  color: var(--farbe-text-sekundaer);
+}

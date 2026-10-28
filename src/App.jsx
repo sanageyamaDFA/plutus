@@ -1,78 +1,33 @@
-import { ChartNoAxesColumn, ChevronDown, ChevronLeft, ChevronRight, House, Menu, Plus, Receipt, ShoppingBasket, Users } from 'lucide-react'
 import './App.css'
+import './components/Navigationsleiste.css'
+import Ringdiagramm from './components/Ringdiagramm'
+import KategorieEintrag from './components/KategorieEintrag'
+import Kopfzeile from './components/Kopfzeile'
+import Monatsauswahl from './components/MonatsAuswahl'
+import { ChartNoAxesColumn, House, Plus, Receipt, ShoppingBasket, Users } from 'lucide-react'
+
 
 function App() {
 
   return(
     <div className="app">
-      <header className="kopfzeile">
-        <button className="kopfzeile_menu" aria_label="Menü öffnen">
-          <Menu />
-        </button>
-
-        <button className="kopfzeile_haushalt">
-          Unser Haushalt<ChevronDown />
-        </button>
-
-        <div className="kopfzeile_user">
-          <span className="avatar">L</span>
-          <span className="avatar">M</span>
-        </div>
-      </header>
-
+    <Kopfzeile haushaltsName="Unser Haushalt" />
     <main className="startseite">
       <div className="zeitraum">
         <button className="zeitraum__option">Woche</button>
         <button className="zeitraum__option zeitraum__option--aktiv"  aria-pressed={true}>Monat</button>
         <button className="zeitraum__option">Jahr</button>
       </div>
-
-      <div className="monatsauswahl">
-        <button className="monatsauswahl__pfeil" aria-label="Vorheriger Monat"><ChevronLeft /></button>
-        <span className="monatsauswahl__monat">Oktober 2026</span>
-        <button className="monatsauswahl__pfeil" aria-label="Nächster Monat"><ChevronRight /></button>
-      </div>
-
-      <div className="ringdiagramm">
-        <p className="ringdiagramm__betrag">842,30 €</p>
-        <p className="ringdiagramm__beschriftung">Ausgaben im Oktober</p>
-      </div>
-
-
+      <Monatsauswahl monat="Oktober 2026" />
+      <Ringdiagramm gesamtbetrag={842.3} beschriftung="Ausgaben im Oktober" />
       <section className="kategorien">
         <h2 className="kategorien__titel">Kategorien</h2>
         <ul className="kategorien__liste">
           <li>
-            <button className="kategorie-eintrag" style={{ '--kategorie-farbe': 'var(--farbe-salbei)' }}>
-              <span className="kategorie-eintrag__icon"><ShoppingBasket /></span>
-              <span className="kategorie-eintrag__text">
-                <span className="kategorie-eintrag__name">Lebensmittel</span>
-                <span className="kategorie-eintrag__balken">
-                  <span className="kategorie-eintrag__fuellung" style={{ width: '37%' }} />
-                </span>
-              </span>
-              <span className="kategorie-eintrag__werte">
-                <span className="kategorie-eintrag__betrag">312,40 €</span>
-                <span className="kategorie-eintrag__anteil">37 %</span>
-              </span>
-              <ChevronRight className="kategorie-eintrag__pfeil" />
-            </button>
+            <KategorieEintrag name="Lebensmittel" icon={ShoppingBasket} farbe="var(--farbe-salbei)" betrag={312.4} anteil={37} />
           </li>
           <li>
-            <button className="kategorie-eintrag" style={{ '--kategorie-farbe': 'var(--farbe-sand)' }}>
-              <span className="kategorie-eintrag__icon"><House /></span>
-              <span className="kategorie-eintrag__text">
-                <span className="kategorie-eintrag__name">Wohnen &amp; Haushalt</span>
-                <span className="kategorie-eintrag__balken">
-                  <span className="kategorie-eintrag__fuellung" style={{ width: '25%' }} />
-                </span>
-              </span>
-              <span className="kategorie-eintrag__werte">
-                <span className="kategorie-eintrag__betrag">210,00 €</span>
-                <span className="kategorie-eintrag__anteil">25 %</span>
-              </span>
-              <ChevronRight className="kategorie-eintrag__pfeil" />
-            </button>
+            <KategorieEintrag name="Wohnen & Haushalt" icon={House} farbe="var(--farbe-sand)" betrag={210} anteil={25} />
           </li>
         </ul>
       </section>

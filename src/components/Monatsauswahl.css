@@ -1,0 +1,25 @@
+.monatsauswahl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--abstand-3);
+}
+
+.monatsauswahl__pfeil {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-klein);
+  color: var(--farbe-text-sekundaer);
+}
+
+.monatsauswahl__pfeil svg {
+  width: 20px;
+  height: 20px;
+}
+
+.monatsauswahl__monat {
+  font-size: var(--schrift-normal);
+  font-weight: 500;
+}

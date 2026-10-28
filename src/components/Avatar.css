@@ -1,0 +1,16 @@
+.avatar {
+  display: inline-flex;
+  place-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--farbe-hintergrund);
+  border-radius: 50%;
+  font-size: var(--schrift-klein);
+  font-weight: 600;
+}
+
+/* Der zweite Avatar überlappt den ersten leicht */
+.avatar + .avatar {
+  margin-left: calc(-1 * var(--abstand-2));
+}
