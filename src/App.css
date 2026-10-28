@@ -49,6 +49,6 @@
 }
 
 /* Trennlinie nur zwischen Einträgen, nicht über dem ersten */
-.kategorien__liste li + li {
+.kategorien__liste li+li {
   border-top: 1px solid var(--farbe-linie);
 }

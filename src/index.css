@@ -43,7 +43,9 @@
 }
 
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -54,7 +56,9 @@ body {
   background-color: var(--farbe-hintergrund);
 }
 
-h1, h2, p {
+h1,
+h2,
+p {
   margin: 0;
 }
 

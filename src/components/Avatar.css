@@ -11,6 +11,6 @@
 }
 
 /* Der zweite Avatar überlappt den ersten leicht */
-.avatar + .avatar {
+.avatar+.avatar {
   margin-left: calc(-1 * var(--abstand-2));
 }

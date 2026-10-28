@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react"
 import formatiereEuro from "../utils/format"
 
 
-export function KategorieEintrag({name, icon: Icon, farbe, betrag, anteil}){
+export function KategorieEintrag({ name, icon: Icon, farbe, betrag, anteil }) {
     return (
         <button className="kategorie-eintrag" style={{ '--kategorie-farbe': farbe }}>
             <span className="kategorie-eintrag__icon">
@@ -16,12 +16,12 @@ export function KategorieEintrag({name, icon: Icon, farbe, betrag, anteil}){
                 </span>
             </span>
             <span className="kategorie-eintrag__werte">
-            <span className="kategorie-eintrag__betrag">{formatiereEuro(betrag)}</span>
-            <span className="kategorie-eintrag__anteil">{Math.round(anteil)} %</span>
+                <span className="kategorie-eintrag__betrag">{formatiereEuro(betrag)}</span>
+                <span className="kategorie-eintrag__anteil">{Math.round(anteil)} %</span>
             </span>
             <ChevronRight className="kategorie-eintrag__pfeil" />
         </button>
-    
+
     )
 }
 
