@@ -1,7 +1,7 @@
-import { Ringdiagramm } from '../components/Ringdiagramm'
-import { KategorieEintrag } from '../components/KategorieEintrag'
-import { Monatsauswahl } from '../components/Monatsauswahl'
-import { Zeitraumauswahl } from '../components/Zeitraumauswahl'
+import { Ringdiagramm } from '../components/auswertung/Ringdiagramm'
+import { KategorieEintrag } from '../components/kategorien/KategorieEintrag'
+import { Monatsauswahl } from '../components/auswertung/Monatsauswahl'
+import { Zeitraumauswahl } from '../components/auswertung/Zeitraumauswahl'
 import {
     berechneAnteil,
     berechneGesamtbetrag,

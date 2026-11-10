@@ -1,5 +1,5 @@
-import { formatiereEuro } from '../utils/format'
-import { KategorieSymbol } from './KategorieSymbol'
+import { formatiereEuro } from '../../utils/format'
+import { KategorieSymbol } from '../kategorien/KategorieSymbol'
 import './AusgabeEintrag.css'
 
 export function AusgabeEintrag({

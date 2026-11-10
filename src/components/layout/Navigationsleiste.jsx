@@ -1,5 +1,5 @@
 import { ChartNoAxesColumn, House, Plus, Receipt, Users } from 'lucide-react'
-import { SEITEN } from '../navigation/seiten'
+import { SEITEN } from '../../navigation/seiten'
 import './Navigationsleiste.css'
 
 const EINTRAEGE_LINKS = [

@@ -1,5 +1,5 @@
 import './Kopfzeile.css'
-import { Avatar } from './Avatar'
+import { Avatar } from '../ui/Avatar'
 import { ChevronDown, Menu } from 'lucide-react'
 
 export function Kopfzeile({ haushaltsName, mitglieder }) {

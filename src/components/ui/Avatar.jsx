@@ -1,5 +1,5 @@
 import './Avatar.css'
-import { alsCSSFarbe } from '../utils/darstellung'
+import { alsCSSFarbe } from '../../utils/darstellung'
 
 export function Avatar({ initial, name, farbe }) {
     return (

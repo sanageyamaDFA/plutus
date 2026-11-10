@@ -1,4 +1,4 @@
-import { alsCSSFarbe, findeSymbol } from "../utils/darstellung";
+import { alsCSSFarbe, findeSymbol } from "../../utils/darstellung";
 import './KategorieSymbol.css'
 
 export function KategorieSymbol({ symbol, farbe }) {

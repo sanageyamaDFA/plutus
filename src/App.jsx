@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Mainlayout } from './components/Mainlayout'
+import { Mainlayout } from './components/layout/Mainlayout'
 import { ausgaben as beispielAusgaben, haushalt, kategorien, mitglieder } from './data/beispieldaten'
 import { SEITEN, HAUPTSEITEN } from './navigation/seiten'
 import { Platzhalterseite } from './pages/Platzhalterseite'

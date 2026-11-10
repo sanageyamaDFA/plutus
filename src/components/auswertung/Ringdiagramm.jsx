@@ -1,7 +1,7 @@
 import './Ringdiagramm.css'
-import { formatiereEuro } from '../utils/format'
-import { berechneAnteil, berechneGesamtbetrag } from '../utils/berechnungen'
-import { alsCSSFarbe } from '../utils/darstellung'
+import { formatiereEuro } from '../../utils/format'
+import { berechneAnteil, berechneGesamtbetrag } from '../../utils/berechnungen'
+import { alsCSSFarbe } from '../../utils/darstellung'
 
 const MITTE = 100
 const RADIUS = 88

@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { AusgabeEintrag } from '../components/AusgabeEintrag'
-import { Filterauswahl } from '../components/Filterauswahl'
+import { AusgabeEintrag } from '../components/ui/AusgabeEintrag'
+import { Filterauswahl } from '../components/ui/Filterauswahl'
 import { gruppiereNachDatum } from '../utils/ausgaben'
 import { formatiereTagesueberschrift, heuteAlsIsoDatum } from '../utils/datum'
 import { findeNachId } from '../utils/listen'

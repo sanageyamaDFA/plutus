@@ -1,8 +1,8 @@
 import './KategorieEintrag.css'
 import { ChevronRight } from "lucide-react"
-import { formatiereEuro } from "../utils/format"
+import { formatiereEuro } from "../../utils/format"
 import { KategorieSymbol } from './KategorieSymbol'
-import { alsCSSFarbe, findeSymbol } from '../utils/darstellung'
+import { alsCSSFarbe, findeSymbol } from '../../utils/darstellung'
 
 
 export function KategorieEintrag({ name, symbol, farbe, betrag, anteil }) {
