@@ -38,6 +38,7 @@
   --schrift-mini: 11px;
   --schrift-klein: 12px;
   --schrift-normal: 14px;
+  --schrift-eingabe: 16px;
   --schrift-titel: 17px;
   --schrift-betrag: 32px;
   --schrift-betrag-gross: 40px;
@@ -114,4 +115,11 @@ button:focus-visible {
 
 .kartenliste>li+li {
   border-top: 1px solid var(--farbe-linie);
+}
+
+.formularlabel {
+  margin-bottom: var(--abstand-1);
+  padding: 0;
+  font-size: var(--schrift-normal);
+  color: var(--farbe-text-sekundaer);
 }

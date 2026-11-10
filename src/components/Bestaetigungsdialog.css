@@ -1,0 +1,33 @@
+.bestaetigungsdialog {
+    width: calc(100% - 2 * var(--abstand-5));
+    max-width: 400px;
+    padding: var(--abstand-6);
+    border: none;
+    border-radius: var(--radius-gross);
+    background-color: var(--farbe-flaeche);
+    color: var(--farbe-text);
+}
+
+/* Fester Wert, weil CSS-Variablen im Hintergrund des Dialogs nicht in allen Browsern ankommen */
+.bestaetigungsdialog::backdrop {
+    background-color: rgb(43 42 40 / 0.4);
+}
+
+.bestaetigungsdialog__titel {
+    font-size: var(--schrift-titel);
+    font-weight: 600;
+}
+
+.bestaetigungsdialog__text {
+    margin-top: var(--abstand-2);
+    font-size: var(--schrift-normal);
+    line-height: 1.5;
+    color: var(--farbe-text-sekundaer);
+}
+
+.bestaetigungsdialog__aktionen {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--abstand-3);
+    margin-top: var(--abstand-6);
+}

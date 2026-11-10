@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import { Bestaetigungsdialog } from '../components/Bestaetigungsdialog'
 import { Aktionsleiste } from '../components/Aktionsleiste'
 import { Avatar } from '../components/Avatar'
 import { Button } from '../components/Button'
@@ -18,6 +20,7 @@ function Detailzeile({ bezeichnung, children }) {
 }
 
 export function Ausgabedetail({ ausgabe, kategorien, mitglieder, onZurueck, onBearbeiten, onLoeschen }) {
+    const [istLoeschdialogOffen, setIstLoeschdialogOffen] = useState(false)
     const kategorie = findeNachId(kategorien, ausgabe.kategorieId)
     const person = findeNachId(mitglieder, ausgabe.bezahltVon)
 
@@ -45,10 +48,19 @@ export function Ausgabedetail({ ausgabe, kategorien, mitglieder, onZurueck, onBe
 
             <Aktionsleiste>
                 <Button onClick={onBearbeiten}>Bearbeiten</Button>
-                <Button variante="destruktiv-dezent" onClick={onLoeschen}>
+                <Button variante="destruktiv-dezent" onClick={() => setIstLoeschdialogOffen(true)}>
                     Löschen
                 </Button>
             </Aktionsleiste>
+
+            <Bestaetigungsdialog
+                offen={istLoeschdialogOffen}
+                titel="Ausgabe löschen?"
+                text={`Möchtest du „${ausgabe.beschreibung} – ${formatiereEuro(ausgabe.betrag)}“ wirklich löschen? Die Ausgabe wird für alle Mitglieder des Haushalts entfernt.`}
+                bestaetigung={"Löschen"}
+                onBestaetigen={onLoeschen}
+                onSchliessen={() => setIstLoeschdialogOffen(false)}
+            />
         </>
     )
 }

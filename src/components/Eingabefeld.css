@@ -1,0 +1,34 @@
+.eingabefeld {
+    display: flex;
+    flex-direction: column;
+}
+
+.eingabefeld__eingabe {
+    min-height: 48px;
+    padding: 0 var(--abstand-4);
+    border: 1px solid var(--farbe-linie);
+    border-radius: var(--radius-mittel);
+    background-color: var(--farbe-flaeche);
+    font: inherit;
+    font-size: var(--schrift-eingabe);
+    color: var(--farbe-text);
+}
+
+.eingabefeld__eingabe::placeholder {
+    color: var(--farbe-text-sekundaer);
+}
+
+.eingabefeld__eingabe:focus-visible {
+    outline: 2px solid var(--farbe-akzent);
+    outline-offset: 1px;
+}
+
+.eingabefeld__eingabe--fehler {
+    border-color: var(--farbe-fehler);
+}
+
+.eingabefeld__fehler {
+    margin-top: var(--abstand-1);
+    font-size: var(--schrift-klein);
+    color: var(--farbe-fehler);
+}
