@@ -1,14 +1,24 @@
 .ringdiagramm {
+  position: relative;
+  width: min(220px, 60vw);
+  aspect-ratio: 1;
+  margin: var(--abstand-2) auto var(--abstand-6);
+}
+
+.ringdiagramm__grafik {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Betrag und Beschriftung liegen mittig über dem Ring */
+.ringdiagramm__mitte {
+  position: absolute;
+  inset: 0;
   display: grid;
   place-content: center;
   justify-items: center;
   gap: 2px;
-  width: min(220px, 60vw);
-  aspect-ratio: 1;
-  margin: var(--abstand-2) auto var(--abstand-6);
-  /* Platzhalter: Der beige Rand wird in Schritt 6 durch den echten Ring ersetzt */
-  border: 12px solid var(--farbe-beige);
-  border-radius: 50%;
 }
 
 .ringdiagramm__betrag {

@@ -10,31 +10,6 @@
   padding: 0 var(--abstand-5) 120px;
 }
 
-/* Zeitraum-Umschalter: alle Optionen gleich breit */
-.zeitraum {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 1fr;
-  padding: 3px;
-  border: 1px solid var(--farbe-linie);
-  border-radius: var(--radius-mittel);
-  background-color: var(--farbe-flaeche);
-}
-
-.zeitraum__option {
-  height: 32px;
-  border-radius: var(--radius-klein);
-  font-size: var(--schrift-normal);
-  color: var(--farbe-text-sekundaer);
-}
-
-.zeitraum__option--aktiv {
-  background-color: var(--farbe-akzent);
-  color: var(--farbe-flaeche);
-  font-weight: 600;
-}
-
-
 /* ---------- Kategorien ---------- */
 .kategorien__titel {
   margin-bottom: var(--abstand-3);

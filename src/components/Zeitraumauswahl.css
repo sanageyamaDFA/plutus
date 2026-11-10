@@ -1,0 +1,22 @@
+.zeitraumauswahl {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    padding: 3px;
+    border: 1px solid var(--farbe-linie);
+    border-radius: var(--radius-mittel);
+    background-color: var(--farbe-flaeche);
+}
+
+.zeitraumauswahl__option {
+    height: 32px;
+    border-radius: var(--radius-klein);
+    font-size: var(--schrift-normal);
+    color: var(--farbe-text-sekundaer);
+}
+
+.zeitraumauswahl__option--aktiv {
+    background-color: var(--farbe-akzent);
+    color: var(--farbe-flaeche);
+    font-weight: 600;
+}

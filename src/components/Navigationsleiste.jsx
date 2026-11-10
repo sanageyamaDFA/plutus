@@ -1,16 +1,50 @@
+import { ChartNoAxesColumn, House, Plus, Receipt, Users } from 'lucide-react'
 import './Navigationsleiste.css'
-export function Navigationsleiste({ initial, name, farbe }) {
+
+const EINTRAEGE_LINKS = [
+  { id: 'uebersicht', label: 'Übersicht', symbol: House },
+  { id: 'ausgaben', label: 'Ausgaben', symbol: Receipt }
+]
+
+const EINTRAEGE_RECHTS = [
+  { id: 'statistik', label: 'Statistik', symbol: ChartNoAxesColumn },
+  { id: 'haushalt', label: 'Haushalt', symbol: Users }
+]
+
+
+
+function NavigationsEintrag({ label, symbol: Symbol, istAktiv }) {
+  const className = istAktiv ? 'navigationsleiste__eintrag navigationsleiste__eintrag--aktiv' : 'navigationsleiste__eintrag'
+  const ariaCurrent = istAktiv ? 'page' : undefined
+
   return (
-    <nav className="navigationsleiste" aria-label="Hauptnavigation">
-      <button className="navigationsleiste__eintrag navigationsleiste__eintrag--aktiv" aria-current="page">
-        <House /><span>Übersicht</span>
-      </button>
-      <button className="navigationsleiste__eintrag"><Receipt /><span>Ausgaben</span></button>
-      <button className="navigationsleiste__plus" aria-label="Neue Ausgabe hinzufügen"><Plus /></button>
-      <button className="navigationsleiste__eintrag"><ChartNoAxesColumn /><span>Statistik</span></button>
-      <button className="navigationsleiste__eintrag"><Users /><span>Haushalt</span></button>
-    </nav>
+    <button className={className} aria-current={ariaCurrent}>
+      <Symbol />
+      <span>{label}</span>
+    </button>
   )
 }
 
-export default Navigationsleiste
+export function Navigationsleiste({ aktiverEintrag, onNeueAusgabe }) {
+  const zeigeEintrag = (eintrag) => (
+    <NavigationsEintrag
+      key={eintrag.id}
+      label={eintrag.label}
+      symbol={eintrag.symbol}
+      istAktiv={eintrag.id === aktiverEintrag}
+    />
+  )
+
+  return (
+    <nav className="navigationsleiste" aria-label="Hauptnavigation">
+      {EINTRAEGE_LINKS.map(zeigeEintrag)}
+      <button className="navigationsleiste__plus"
+        aria-label="Neue Ausgabe hinzufügen"
+        onClick={onNeueAusgabe}
+      >
+        <Plus />
+      </button>
+      {EINTRAEGE_RECHTS.map(zeigeEintrag)}
+    </nav>
+  )
+}

@@ -12,5 +12,3 @@ export function Monatsauswahl({ monat }) {
         </div>
     )
 }
-
-export default Monatsauswahl

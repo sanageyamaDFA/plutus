@@ -3,8 +3,6 @@ const euroFormat = new Intl.NumberFormat('de-DE', {
     currency: 'EUR'
 })
 
-function formatiereEuro(betrag){
+export function formatiereEuro(betrag) {
     return euroFormat.format(betrag)
 }
-
-export default formatiereEuro

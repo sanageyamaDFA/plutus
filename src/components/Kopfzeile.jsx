@@ -1,8 +1,8 @@
 import './Kopfzeile.css'
-import Avatar from './Avatar'
+import { Avatar } from './Avatar'
 import { ChevronDown, Menu } from 'lucide-react'
 
-export function Kopfzeile({ haushaltsName }) {
+export function Kopfzeile({ haushaltsName, mitglieder }) {
 
     return (
         <header className="kopfzeile">
@@ -15,11 +15,15 @@ export function Kopfzeile({ haushaltsName }) {
             </button>
 
             <div className="kopfzeile__mitglieder">
-                <Avatar initial="L" name="Leandro" farbe="var(--farbe-salbei)" />
-                <Avatar initial="M" name="Max" farbe="var(--farbe-sand)" />
+                {mitglieder.map((mitglied) => (
+                    <Avatar
+                        key={mitglied.id}
+                        initial={mitglied.initial}
+                        name={mitglied.name}
+                        farbe={mitglied.farbe}
+                    />
+                ))}
             </div>
         </header>
     )
 }
-
-export default Kopfzeile

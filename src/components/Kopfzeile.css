@@ -28,3 +28,9 @@
   justify-self: end;
   padding-right: var(--abstand-2)
 }
+
+.kopfzeile__haushalt svg {
+  width: 18px;
+  height: 18px;
+  color: var(--farbe-text-sekundaer);
+}
