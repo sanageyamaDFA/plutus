@@ -1,0 +1,39 @@
+.ausgabe-eintrag {
+    display: flex;
+    align-items: center;
+    gap: var(--abstand-3);
+    width: 100%;
+    padding: var(--abstand-3) var(--abstand-4);
+    text-align: left;
+}
+
+.ausgabe-eintrag:hover {
+    background-color: var(--farbe-hintergrund);
+}
+
+.ausgabe-eintrag__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.ausgabe-eintrag__beschreibung {
+    overflow: hidden;
+    font-size: var(--schrift-normal);
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ausgabe-eintrag__details {
+    font-size: var(--schrift-klein);
+    color: var(--farbe-text-sekundaer);
+}
+
+.ausgabe-eintrag__betrag {
+    font-size: var(--schrift-normal);
+    font-weight: 600;
+    white-space: nowrap;
+}

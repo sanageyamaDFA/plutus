@@ -1,0 +1,14 @@
+.aktionsleiste {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: var(--abstand-3);
+    width: 100%;
+    max-width: var(--breite-app);
+    padding: var(--abstand-4) var(--abstand-5) calc(var(--abstand-5) + env(safe-area-inset-bottom));
+    background-color: var(--farbe-hintergrund);
+}

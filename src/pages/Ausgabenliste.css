@@ -1,0 +1,16 @@
+.ausgabenliste__tag+.ausgabenliste__tag {
+    margin-top: var(--abstand-5);
+}
+
+.ausgabenliste__datum {
+    margin-bottom: var(--abstand-2);
+    font-size: var(--schrift-normal);
+    font-weight: 400;
+    color: var(--farbe-text-sekundaer);
+}
+
+.ausgabenliste__leer {
+    margin-top: var(--abstand-6);
+    text-align: center;
+    color: var(--farbe-text-sekundaer);
+}

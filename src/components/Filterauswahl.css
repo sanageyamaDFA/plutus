@@ -1,0 +1,26 @@
+.filterauswahl {
+    display: flex;
+    gap: var(--abstand-2);
+    /* Die Leiste reicht bis an den Bildschirmrand und scrollt seitlich */
+    margin: 0 calc(-1 * var(--abstand-5)) var(--abstand-5);
+    padding: 0 var(--abstand-5);
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.filterauswahl__option {
+    flex-shrink: 0;
+    padding: var(--abstand-2) var(--abstand-4);
+    border: 1px solid var(--farbe-linie);
+    border-radius: var(--radius-pille);
+    background-color: var(--farbe-flaeche);
+    font-size: var(--schrift-normal);
+    color: var(--farbe-text-sekundaer);
+    white-space: nowrap;
+}
+
+.filterauswahl__option--aktiv {
+    border-color: var(--farbe-akzent);
+    background-color: var(--farbe-akzent);
+    color: var(--farbe-flaeche);
+}

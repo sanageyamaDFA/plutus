@@ -11,21 +11,6 @@
   background-color: var(--farbe-hintergrund);
 }
 
-.kategorie-eintrag__icon {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: var(--kategorie-farbe);
-}
-
-.kategorie-eintrag__icon svg {
-  width: 18px;
-  height: 18px;
-}
-
 .kategorie-eintrag__text {
   display: flex;
   flex: 1;

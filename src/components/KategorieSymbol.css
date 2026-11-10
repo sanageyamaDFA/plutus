@@ -1,0 +1,14 @@
+.kategorie-symbol {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--kategorie-farbe);
+}
+
+.kategorie-symbol svg {
+    width: 18px;
+    height: 18px;
+}

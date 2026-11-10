@@ -1,0 +1,4 @@
+.mainlayout__inhalt {
+    /* Unten Platz lassen, damit die fixierte Navigationsleiste nichts verdeckt */
+    padding: 0 var(--abstand-5) 120px;
+}

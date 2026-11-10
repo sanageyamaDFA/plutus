@@ -1,0 +1,6 @@
+/* ---------- Kategorien ---------- */
+.kategorien__titel {
+    margin-bottom: var(--abstand-3);
+    font-size: var(--schrift-titel);
+    font-weight: 600;
+}

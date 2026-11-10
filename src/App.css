@@ -1,29 +1,11 @@
 .app {
-  max-width: var(--breite-app);
-  min-height: 100dvh;
-  margin: 0 auto;
-  padding-top: env(safe-area-inset-top);
+    max-width: var(--breite-app);
+    min-height: 100dvh;
+    margin: 0 auto;
+    padding-top: env(safe-area-inset-top);
 }
 
-.startseite {
-  /* Unten Platz lassen, damit die fixierte Navigationsleiste nichts verdeckt */
-  padding: 0 var(--abstand-5) 120px;
-}
-
-/* ---------- Kategorien ---------- */
-.kategorien__titel {
-  margin-bottom: var(--abstand-3);
-  font-size: var(--schrift-titel);
-  font-weight: 600;
-}
-
-.kategorien__liste {
-  overflow: hidden;
-  border-radius: var(--radius-gross);
-  background-color: var(--farbe-flaeche);
-}
-
-/* Trennlinie nur zwischen Einträgen, nicht über dem ersten */
-.kategorien__liste li+li {
-  border-top: 1px solid var(--farbe-linie);
+.unterseite {
+    /* Unten Platz für die Aktionsleiste */
+    padding: 0 var(--abstand-5) 120px;
 }

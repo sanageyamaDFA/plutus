@@ -1,0 +1,12 @@
+.zurueck-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--abstand-1);
+    padding: var(--abstand-4) 0;
+    font-weight: 500;
+}
+
+.zurueck-button svg {
+    width: 20px;
+    height: 20px;
+}

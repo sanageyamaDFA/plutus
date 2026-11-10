@@ -24,11 +24,14 @@
   --abstand-4: 16px;
   --abstand-5: 20px;
   --abstand-6: 24px;
+  --abstand-7: 28px;
+  --abstand-8: 32px;
 
   /* Radien */
   --radius-klein: 8px;
   --radius-mittel: 12px;
   --radius-gross: 16px;
+  --radius-pille: 999px;
 
   /* Schrift */
   --schrift: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -37,6 +40,7 @@
   --schrift-normal: 14px;
   --schrift-titel: 17px;
   --schrift-betrag: 32px;
+  --schrift-betrag-gross: 40px;
 
   /* Layout */
   --breite-app: 480px;
@@ -90,4 +94,24 @@ button:focus-visible {
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
+}
+
+.seitentitel {
+  margin: var(--abstand-2) 0 var(--abstand-4);
+  font-size: var(--schrift-seitentitel);
+  font-weight: 600;
+}
+
+.platzhalterseite__hinweis {
+  color: var(--farbe-text-sekundaer);
+}
+
+.kartenliste {
+  overflow: hidden;
+  border-radius: var(--radius-gross);
+  background-color: var(--farbe-flaeche);
+}
+
+.kartenliste>li+li {
+  border-top: 1px solid var(--farbe-linie);
 }
