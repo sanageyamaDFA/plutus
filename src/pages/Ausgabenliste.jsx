@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { AusgabeEintrag } from '../components/ui/AusgabeEintrag'
+import { AusgabenKarte } from '../components/ausgaben/AusgabenKarte'
 import { Filterauswahl } from '../components/ui/Filterauswahl'
 import { gruppiereNachDatum } from '../utils/ausgaben'
 import { formatiereTagesueberschrift, heuteAlsIsoDatum } from '../utils/datum'
-import { findeNachId } from '../utils/listen'
 import './Ausgabenliste.css'
 
 const ALLE = 'alle'
@@ -23,27 +22,8 @@ export function Ausgabenliste({ ausgaben, kategorien, mitglieder, onAusgabeAuswa
         ...kategorien.map((kategorie) => ({ id: kategorie.id, label: kategorie.name })),
     ]
 
-    function zeigeAusgabe(ausgabe) {
-        const kategorie = findeNachId(kategorien, ausgabe.kategorieId)
-        const person = findeNachId(mitglieder, ausgabe.bezahltVon)
-
-        return (
-            <li key={ausgabe.id}>
-                <AusgabeEintrag
-                    beschreibung={ausgabe.beschreibung}
-                    betrag={ausgabe.betrag}
-                    kategorieName={kategorie.name}
-                    symbol={kategorie.symbol}
-                    farbe={kategorie.farbe}
-                    personName={person.name}
-                    onClick={() => onAusgabeAuswahl(ausgabe.id)}
-                />
-            </li>
-        )
-    }
-
     return (
-        <>
+        <div className="ausgabenliste">
             <h1 className="seitentitel">Ausgaben</h1>
             <Filterauswahl
                 optionen={filteroptionen}
@@ -61,9 +41,14 @@ export function Ausgabenliste({ ausgaben, kategorien, mitglieder, onAusgabeAuswa
                     <h2 className="ausgabenliste__datum">
                         {formatiereTagesueberschrift(tag.datum, heute)}
                     </h2>
-                    <ul className="kartenliste">{tag.ausgaben.map(zeigeAusgabe)}</ul>
+                    <AusgabenKarte
+                        ausgaben={tag.ausgaben}
+                        kategorien={kategorien}
+                        mitglieder={mitglieder}
+                        onAuswahl={onAusgabeAuswahl}
+                    />
                 </section>
             ))}
-        </>
+        </div>
     )
 }

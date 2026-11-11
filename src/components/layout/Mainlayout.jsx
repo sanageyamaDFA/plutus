@@ -11,14 +11,19 @@ export function Mainlayout({
     children
 }) {
     return (
-        <>
-            <Kopfzeile haushaltsName={haushalt.name} mitglieder={mitglieder} />
+        <div className="mainlayout">
+            <div className="mainlayout__kopf">
+                <Kopfzeile haushaltsName={haushalt.name} mitglieder={mitglieder} />
+            </div>
             <main className="mainlayout__inhalt">{children}</main>
-            <Navigationsleiste
-                aktiveSeite={aktiveSeite}
-                onNavigation={onNavigation}
-                onNeueAusgabe={onNeueAusgabe}
-            />
-        </>
+            <div className="mainlayout__navigation">
+                <Navigationsleiste
+                    aktiveSeite={aktiveSeite}
+                    onNavigation={onNavigation}
+                    onNeueAusgabe={onNeueAusgabe}
+                />
+            </div>
+        </div>
     )
+
 }

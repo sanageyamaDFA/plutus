@@ -12,3 +12,14 @@
     padding: var(--abstand-4) var(--abstand-5) calc(var(--abstand-5) + env(safe-area-inset-bottom));
     background-color: var(--farbe-hintergrund);
 }
+
+@media (min-width: 1024px) {
+    .aktionsleiste {
+        position: static;
+        transform: none;
+        max-width: none;
+        margin-top: var(--abstand-6);
+        padding: 0;
+        background: none;
+    }
+}

@@ -46,3 +46,76 @@
   width: 28px;
   height: 28px;
 }
+
+.navigationsleiste__plus {
+  /* Steht im HTML am Ende, wird auf dem Smartphone in die Mitte gesetzt */
+  grid-column: 3;
+  grid-row: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--abstand-2);
+  align-self: start;
+  justify-self: center;
+  width: 56px;
+  height: 56px;
+  margin-top: -38px;
+  border-radius: 50%;
+  background-color: var(--farbe-akzent);
+  color: var(--farbe-flaeche);
+}
+
+.navigationsleiste__plus-text {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .navigationsleiste {
+    position: sticky;
+    top: 0;
+    left: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--abstand-1);
+    width: auto;
+    max-width: none;
+    height: 100dvh;
+    padding: var(--abstand-6) var(--abstand-4);
+    border-top: none;
+    border-right: 1px solid var(--farbe-linie);
+    align-items: stretch;
+  }
+
+  .navigationsleiste__eintrag {
+    flex-direction: row;
+    gap: var(--abstand-3);
+    padding: var(--abstand-3);
+    border-radius: var(--radius-mittel);
+    font-size: var(--schrift-normal);
+    justify-content: flex-start;
+  }
+
+  .navigationsleiste__eintrag:hover,
+  .navigationsleiste__eintrag--aktiv {
+    background-color: var(--farbe-hintergrund);
+  }
+
+  .navigationsleiste__plus {
+    width: 100%;
+    height: 48px;
+    margin-top: var(--abstand-4);
+    border-radius: var(--radius-mittel);
+    font-size: var(--schrift-normal);
+    font-weight: 600;
+  }
+
+  .navigationsleiste__plus svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .navigationsleiste__plus-text {
+    display: inline;
+  }
+}

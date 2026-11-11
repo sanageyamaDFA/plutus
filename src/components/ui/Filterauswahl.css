@@ -24,3 +24,11 @@
     background-color: var(--farbe-akzent);
     color: var(--farbe-flaeche);
 }
+
+@media (min-width: 1024px) {
+    .filterauswahl {
+        flex-wrap: wrap;
+        margin: 0 0 var(--abstand-5);
+        padding: 0;
+    }
+}

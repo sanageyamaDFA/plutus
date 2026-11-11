@@ -35,3 +35,7 @@ export function gruppiereNachDatum(ausgaben) {
         ausgaben: ausgabenDesTages,
     }))
 }
+
+export function ermittleNeuesteAusgaben(ausgaben, anzahl) {
+    return ausgaben.toSorted(vergleicheNeuesteZuerst).slice(0, anzahl)
+}

@@ -2,3 +2,29 @@
     /* Unten Platz lassen, damit die fixierte Navigationsleiste nichts verdeckt */
     padding: 0 var(--abstand-5) 120px;
 }
+
+@media (min-width: 1024px) {
+    .mainlayout {
+        display: grid;
+        grid-template-columns: 240px minmax(0, 1fr);
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            'navigation kopf'
+            'navigation inhalt';
+        grid-template-columns: 260px minmax(0, 1fr);
+        column-gap: 0;
+        min-height: 100dvh;
+    }
+
+    .mainlayout__kopf {
+        padding-inline: var(--abstand-8);
+    }
+
+    .mainlayout__navigation {
+        grid-area: navigation;
+    }
+
+    .mainlayout__inhalt {
+        padding-inline: var(--abstand-8);
+    }
+}

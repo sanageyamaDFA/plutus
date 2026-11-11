@@ -2,16 +2,12 @@ import { ChartNoAxesColumn, House, Plus, Receipt, Users } from 'lucide-react'
 import { SEITEN } from '../../navigation/seiten'
 import './Navigationsleiste.css'
 
-const EINTRAEGE_LINKS = [
+const EINTRAEGE = [
   { seite: SEITEN.UEBERSICHT, label: 'Übersicht', symbol: House },
   { seite: SEITEN.AUSGABEN, label: 'Ausgaben', symbol: Receipt },
-]
-
-const EINTRAEGE_RECHTS = [
   { seite: SEITEN.STATISTIK, label: 'Statistik', symbol: ChartNoAxesColumn },
   { seite: SEITEN.HAUSHALT, label: 'Haushalt', symbol: Users },
 ]
-
 
 
 function NavigationsEintrag({ label, symbol: Symbol, istAktiv, onClick }) {
@@ -42,14 +38,17 @@ export function Navigationsleiste({ aktiveSeite, onNavigation, onNeueAusgabe }) 
 
   return (
     <nav className="navigationsleiste" aria-label="Hauptnavigation">
-      {EINTRAEGE_LINKS.map(zeigeEintrag)}
-      <button className="navigationsleiste__plus"
+      {EINTRAEGE.map(zeigeEintrag)}
+      <button
+        className="navigationsleiste__plus"
         aria-label="Neue Ausgabe hinzufügen"
         onClick={onNeueAusgabe}
       >
         <Plus />
+        <span className="navigationsleiste__plus-text" aria-hidden="true">
+          Neue Ausgabe
+        </span>
       </button>
-      {EINTRAEGE_RECHTS.map(zeigeEintrag)}
     </nav>
   )
 }

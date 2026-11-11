@@ -123,3 +123,9 @@ button:focus-visible {
   font-size: var(--schrift-normal);
   color: var(--farbe-text-sekundaer);
 }
+
+.abschnittstitel {
+  margin-bottom: var(--abstand-3);
+  font-size: var(--schrift-titel);
+  font-weight: 600;
+}

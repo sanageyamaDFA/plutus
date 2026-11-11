@@ -9,3 +9,16 @@
     /* Unten Platz für die Aktionsleiste */
     padding: 0 var(--abstand-5) 120px;
 }
+
+@media (min-width: 1024px) {
+    .app {
+        max-width: none;
+        padding: 0;
+    }
+
+    .unterseite {
+        max-width: var(--breite-app);
+        margin: 0 auto;
+        padding-bottom: var(--abstand-8);
+    }
+}

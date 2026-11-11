@@ -1,6 +1,46 @@
 /* ---------- Kategorien ---------- */
-.kategorien__titel {
-    margin-bottom: var(--abstand-3);
-    font-size: var(--schrift-titel);
-    font-weight: 600;
+
+/* Auf dem Smartphone bleibt die Startseite wie im Figma-Design */
+.startseite__letzte {
+    display: none;
+}
+
+@media (min-width: 1024px) {
+    .startseite {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            'auswertung kategorien'
+            'letzte     kategorien';
+        gap: var(--abstand-6) var(--abstand-8);
+        padding-top: var(--abstand-4);
+    }
+
+    .startseite__auswertung {
+        grid-area: auswertung;
+    }
+
+    .startseite__letzte {
+        display: block;
+        grid-area: letzte;
+    }
+
+    /* Die Kategorien füllen die ganze Höhe der rechten Spalte */
+    .startseite__kategorien {
+        display: flex;
+        flex-direction: column;
+        grid-area: kategorien;
+    }
+
+    .startseite__kategorienliste {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+    }
+
+    .startseite__kategorienliste>li {
+        display: grid;
+        flex: 1;
+    }
 }

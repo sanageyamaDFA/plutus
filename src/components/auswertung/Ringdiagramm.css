@@ -31,3 +31,10 @@
   font-size: var(--schrift-klein);
   color: var(--farbe-text-sekundaer);
 }
+
+@media (min-width: 1024px) {
+  .ringdiagramm {
+    width: clamp(260px, 20vw, 340px);
+    margin-top: var(--abstand-6);
+  }
+}

@@ -62,8 +62,10 @@ export function App() {
           <Startseite
             ausgaben={ausgaben}
             kategorien={kategorien}
+            mitglieder={mitglieder}
             jahr={ANGEZEIGTES_JAHR}
             monat={ANGEZEIGTER_MONAT}
+            onAusgabeAuswahl={(ausgabeId) => oeffneSeite(SEITEN.AUSGABEDETAIL, { ausgabeId })}
           />
         )
       case SEITEN.AUSGABEN:
