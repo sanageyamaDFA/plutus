@@ -8,16 +8,17 @@ import { Ausgabenliste } from './pages/Ausgabenliste'
 import { Startseite } from './pages/Startseite'
 import { Ausgabeformular } from './pages/Ausgabeformular'
 import { Kategoriedetail } from './pages/Kategoriedetail'
+import { Anmeldeseite } from './pages/Anmeldeseite'
 import { findeNachId, ermittleNaechsteId } from './utils/listen'
+import { pruefeZugangsdaten } from './utils/anmeldung'
+import { TESTZUGAENGE } from './data/testzugaenge'
 import './App.css'
 
 const ANGEZEIGTES_JAHR = 2026
 const ANGEZEIGTER_MONAT = 10
 
-// Wird durch die Anmeldung ersetzt
-const AKTUELLES_MITGLIED_ID = 1
-
 export function App() {
+  const [angemeldetesMitgliedId, setAngemeldetesMitgliedId] = useState(null)
   const [verlauf, setVerlauf] = useState([{ seite: SEITEN.UEBERSICHT }])
   const ansicht = verlauf.at(-1)
   const istHauptseite = HAUPTSEITEN.includes(ansicht.seite)
@@ -58,6 +59,18 @@ export function App() {
 
   function oeffneKategorie(kategorieId) {
     oeffneSeite(SEITEN.KATEGORIEDETAIL, { kategorieId })
+  }
+
+
+  function meldeAn(email, passwort) {
+    const mitgliedId = pruefeZugangsdaten(TESTZUGAENGE, email, passwort)
+    if (mitgliedId === null) {
+      return false
+    }
+
+    setAngemeldetesMitgliedId(mitgliedId)
+    setVerlauf([{ seite: SEITEN.UEBERSICHT }])
+    return true
   }
 
   function zeigeSeite() {
@@ -104,7 +117,7 @@ export function App() {
           <Ausgabeformular
             kategorien={kategorien}
             mitglieder={mitglieder}
-            aktuellesMitgliedId={AKTUELLES_MITGLIED_ID}
+            aktuellesMitgliedId={angemeldetesMitgliedId}
             onSpeichern={legeAusgabeAn}
             onSchliessen={geheZurueck}
           />
@@ -121,7 +134,7 @@ export function App() {
             ausgabe={ausgabe}
             kategorien={kategorien}
             mitglieder={mitglieder}
-            aktuellesMitgliedId={AKTUELLES_MITGLIED_ID}
+            aktuellesMitgliedId={angemeldetesMitgliedId}
             onSpeichern={(daten) => aktualisiereAusgabe(ausgabe.id, daten)}
             onSchliessen={geheZurueck}
           />
@@ -153,6 +166,16 @@ export function App() {
       default:
         return <Platzhalterseite titel="Seite nicht gefunden" />
     }
+  }
+
+  if (angemeldetesMitgliedId === null) {
+    return (
+      <div className="app">
+        <div className="unterseite">
+          <Anmeldeseite onAnmelden={meldeAn} />
+        </div>
+      </div>
+    )
   }
 
   return (

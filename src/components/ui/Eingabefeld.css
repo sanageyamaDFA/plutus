@@ -32,3 +32,23 @@
     font-size: var(--schrift-klein);
     color: var(--farbe-fehler);
 }
+
+.eingabefeld__rahmen {
+    position: relative;
+    display: flex;
+}
+
+.eingabefeld__eingabe {
+    width: 100%;
+}
+
+.eingabefeld__eingabe--mit-zusatz {
+    padding-right: 48px;
+}
+
+.eingabefeld__zusatz {
+    position: absolute;
+    top: 50%;
+    right: var(--abstand-1);
+    transform: translateY(-50%);
+}

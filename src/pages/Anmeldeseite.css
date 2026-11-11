@@ -1,0 +1,41 @@
+.anmeldeseite__kopf {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--abstand-2);
+    margin: 12vh 0 var(--abstand-8);
+    text-align: center;
+}
+
+/* Ein Ring mit einem farbigen Bogen, angelehnt an das Ringdiagramm */
+.anmeldeseite__logo {
+    width: 56px;
+    height: 56px;
+    margin-bottom: var(--abstand-4);
+    border: 6px solid var(--farbe-beige);
+    border-top-color: var(--farbe-salbei);
+    border-radius: 50%;
+}
+
+.anmeldeseite__titel {
+    font-size: var(--schrift-seitentitel);
+    font-weight: 600;
+}
+
+.anmeldeseite__untertitel {
+    font-size: var(--schrift-normal);
+    color: var(--farbe-text-sekundaer);
+}
+
+.anmeldeseite__formular {
+    display: flex;
+    flex-direction: column;
+    gap: var(--abstand-4);
+}
+
+.anmeldeseite__hinweis {
+    margin-top: var(--abstand-6);
+    text-align: center;
+    font-size: var(--schrift-klein);
+    color: var(--farbe-text-sekundaer);
+}

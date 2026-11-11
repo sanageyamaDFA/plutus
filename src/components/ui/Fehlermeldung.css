@@ -1,0 +1,17 @@
+.fehlermeldung {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--abstand-2);
+    padding: var(--abstand-3) var(--abstand-4);
+    border: 1px solid var(--farbe-fehler);
+    border-radius: var(--radius-mittel);
+    background-color: var(--farbe-fehler-hintergrund);
+    font-size: var(--schrift-normal);
+}
+
+.fehlermeldung svg {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--farbe-fehler);
+}
