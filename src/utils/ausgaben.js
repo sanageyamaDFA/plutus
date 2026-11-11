@@ -36,6 +36,17 @@ export function gruppiereNachDatum(ausgaben) {
     }))
 }
 
+export function sortiereNeuesteZuerst(ausgaben) {
+    return ausgaben.toSorted(vergleicheNeuesteZuerst)
+}
+
 export function ermittleNeuesteAusgaben(ausgaben, anzahl) {
-    return ausgaben.toSorted(vergleicheNeuesteZuerst).slice(0, anzahl)
+    return sortiereNeuesteZuerst(ausgaben).slice(0, anzahl)
+}
+
+export function filtereNachMonat(ausgaben, jahr, monat) {
+    return ausgaben.filter((ausgabe) => {
+        const [ausgabeJahr, ausgabeMonat] = ausgabe.datum.split('-').map(Number)
+        return ausgabeJahr === jahr && ausgabeMonat === monat
+    })
 }

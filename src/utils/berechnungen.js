@@ -9,13 +9,6 @@ export function berechneAnteil(betrag, gesamtbetrag) {
     return (betrag / gesamtbetrag) * 100
 }
 
-export function filtereNachMonat(ausgaben, jahr, monat) {
-    return ausgaben.filter((ausgabe) => {
-        const [ausgabeJahr, ausgabeMonat] = ausgabe.datum.split('-').map(Number)
-        return ausgabeJahr === jahr && ausgabeMonat === monat
-    })
-}
-
 export function berechneKategorieSummen(ausgaben, kategorien) {
     return kategorien.map((kategorie) => {
         const ausgabenDerKategorie = ausgaben.filter(

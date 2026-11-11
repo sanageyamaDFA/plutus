@@ -2,19 +2,19 @@ import { Ringdiagramm } from '../components/auswertung/Ringdiagramm'
 import { KategorieEintrag } from '../components/kategorien/KategorieEintrag'
 import { Monatsauswahl } from '../components/auswertung/Monatsauswahl'
 import { Zeitraumauswahl } from '../components/auswertung/Zeitraumauswahl'
-import { ermittleNeuesteAusgaben } from '../utils/ausgaben'
 import { AusgabenKarte } from '../components/ausgaben/AusgabenKarte'
+import { formatiereMonatsname } from '../utils/datum'
+import { ermittleNeuesteAusgaben, filtereNachMonat } from '../utils/ausgaben'
 import {
     berechneAnteil,
     berechneGesamtbetrag,
     berechneKategorieSummen,
-    filtereNachMonat
 } from '../utils/berechnungen'
 import './Startseite.css'
 
 const ANZAHL_LETZTE_AUSGABEN = 5
 
-export function Startseite({ ausgaben, kategorien, mitglieder, jahr, monat, onAusgabeAuswahl }) {
+export function Startseite({ ausgaben, kategorien, mitglieder, jahr, monat, onAusgabeAuswahl, onKategorieAuswahl }) {
 
     const ausgabenImMonat = filtereNachMonat(ausgaben, jahr, monat)
     const kategorieSummen = berechneKategorieSummen(ausgabenImMonat, kategorien)
@@ -22,14 +22,16 @@ export function Startseite({ ausgaben, kategorien, mitglieder, jahr, monat, onAu
         .toSorted((a, b) => b.betrag - a.betrag)
     const gesamtbetrag = berechneGesamtbetrag(kategorieSummen)
     const letzteAusgaben = ermittleNeuesteAusgaben(ausgabenImMonat, ANZAHL_LETZTE_AUSGABEN)
+    const monatsname = formatiereMonatsname(jahr, monat)
+
 
     return (
         <div className="startseite">
             <h1 className="visuell-versteckt">Übersicht</h1>
             <div className="startseite__auswertung">
                 <Zeitraumauswahl aktiverZeitraum="Monat" />
-                <Monatsauswahl monat="Oktober 2026" />
-                <Ringdiagramm eintraege={kategorieSummen} beschriftung="Ausgaben im Oktober" />
+                <Monatsauswahl monat={`${monatsname} ${jahr}`} />
+                <Ringdiagramm eintraege={kategorieSummen} beschriftung={`Ausgaben im ${monatsname}`} />
             </div>
             <section className="kategorien startseite__kategorien">
                 <h2 className="abschnittstitel">Kategorien</h2>
@@ -42,6 +44,7 @@ export function Startseite({ ausgaben, kategorien, mitglieder, jahr, monat, onAu
                                 farbe={kategorie.farbe}
                                 betrag={kategorie.betrag}
                                 anteil={berechneAnteil(kategorie.betrag, gesamtbetrag)}
+                                onClick={() => onKategorieAuswahl(kategorie.id)}
                             />
                         </li>
                     ))}

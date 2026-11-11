@@ -5,9 +5,12 @@ import { KategorieSymbol } from './KategorieSymbol'
 import { alsCSSFarbe, findeSymbol } from '../../utils/darstellung'
 
 
-export function KategorieEintrag({ name, symbol, farbe, betrag, anteil }) {
+export function KategorieEintrag({ name, symbol, farbe, betrag, anteil, onClick }) {
     return (
-        <button className="kategorie-eintrag" style={{ '--kategorie-farbe': alsCSSFarbe(farbe) }}>
+        <button className="kategorie-eintrag"
+            style={{ '--kategorie-farbe': alsCSSFarbe(farbe) }}
+            onClick={onClick}
+        >
             <KategorieSymbol symbol={symbol} farbe={farbe} />
             <span className="kategorie-eintrag__text">
                 <span className="kategorie-eintrag__name">{name}</span>

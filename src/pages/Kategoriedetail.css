@@ -1,0 +1,24 @@
+.kategoriedetail__kopf {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--abstand-2);
+    margin: var(--abstand-4) 0 var(--abstand-8);
+    text-align: center;
+}
+
+.kategoriedetail__titel {
+    font-size: var(--schrift-seitentitel);
+    font-weight: 600;
+}
+
+.kategoriedetail__zusammenfassung {
+    font-size: var(--schrift-normal);
+    color: var(--farbe-text-sekundaer);
+}
+
+.kategoriedetail__leer {
+    margin-top: var(--abstand-4);
+    text-align: center;
+    color: var(--farbe-text-sekundaer);
+}

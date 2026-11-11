@@ -12,3 +12,13 @@
     width: 18px;
     height: 18px;
 }
+
+.kategorie-symbol--gross {
+    width: 64px;
+    height: 64px;
+}
+
+.kategorie-symbol--gross svg {
+    width: 32px;
+    height: 32px;
+}

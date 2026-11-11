@@ -39,3 +39,9 @@ const VOLLSTAENDIGES_DATUM = new Intl.DateTimeFormat('de-DE', {
 export function formatiereDatum(isoDatum) {
     return VOLLSTAENDIGES_DATUM.format(ausIsoDatum(isoDatum))
 }
+
+const MONATSNAME = new Intl.DateTimeFormat('de-DE', { month: 'long' })
+
+export function formatiereMonatsname(jahr, monat) {
+    return MONATSNAME.format(new Date(jahr, monat - 1))
+}

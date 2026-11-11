@@ -6,9 +6,10 @@ import { Platzhalterseite } from './pages/Platzhalterseite'
 import { Ausgabedetail } from './pages/Ausgabedetail'
 import { Ausgabenliste } from './pages/Ausgabenliste'
 import { Startseite } from './pages/Startseite'
+import { Ausgabeformular } from './pages/Ausgabeformular'
+import { Kategoriedetail } from './pages/Kategoriedetail'
 import { findeNachId, ermittleNaechsteId } from './utils/listen'
 import './App.css'
-import { Ausgabeformular } from './pages/Ausgabeformular'
 
 const ANGEZEIGTES_JAHR = 2026
 const ANGEZEIGTER_MONAT = 10
@@ -55,6 +56,10 @@ export function App() {
     geheZurueck()
   }
 
+  function oeffneKategorie(kategorieId) {
+    oeffneSeite(SEITEN.KATEGORIEDETAIL, { kategorieId })
+  }
+
   function zeigeSeite() {
     switch (ansicht.seite) {
       case SEITEN.UEBERSICHT:
@@ -66,6 +71,7 @@ export function App() {
             jahr={ANGEZEIGTES_JAHR}
             monat={ANGEZEIGTER_MONAT}
             onAusgabeAuswahl={(ausgabeId) => oeffneSeite(SEITEN.AUSGABEDETAIL, { ausgabeId })}
+            onKategorieAuswahl={oeffneKategorie}
           />
         )
       case SEITEN.AUSGABEN:
@@ -118,6 +124,24 @@ export function App() {
             aktuellesMitgliedId={AKTUELLES_MITGLIED_ID}
             onSpeichern={(daten) => aktualisiereAusgabe(ausgabe.id, daten)}
             onSchliessen={geheZurueck}
+          />
+        )
+      }
+      case SEITEN.KATEGORIEDETAIL: {
+        const kategorie = findeNachId(kategorien, ansicht.kategorieId)
+        if (!kategorie) {
+          return <Platzhalterseite titel="Kategorie nicht gefunden" />
+        }
+        return (
+          <Kategoriedetail
+            kategorie={kategorie}
+            ausgaben={ausgaben}
+            kategorien={kategorien}
+            mitglieder={mitglieder}
+            jahr={ANGEZEIGTES_JAHR}
+            monat={ANGEZEIGTER_MONAT}
+            onZurueck={geheZurueck}
+            onAusgabeAuswahl={(ausgabeId) => oeffneSeite(SEITEN.AUSGABEDETAIL, { ausgabeId })}
           />
         )
       }
