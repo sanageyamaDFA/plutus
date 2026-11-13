@@ -16,9 +16,3 @@
     font-size: var(--schrift-normal);
     color: var(--farbe-text-sekundaer);
 }
-
-.kategoriedetail__leer {
-    margin-top: var(--abstand-4);
-    text-align: center;
-    color: var(--farbe-text-sekundaer);
-}

@@ -33,7 +33,7 @@ export function Ausgabenliste({ ausgaben, kategorien, mitglieder, onAusgabeAuswa
             />
 
             {tage.length === 0 && (
-                <p className="ausgabenliste__leer">Hier gibt es noch keine Ausgaben.</p>
+                <p className="leerhinweis">Hier gibt es noch keine Ausgaben.</p>
             )}
 
             {tage.map((tag) => (

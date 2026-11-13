@@ -41,7 +41,7 @@ export function Kategoriedetail({
                 <h2 className="abschnittstitel">Ausgaben im {monatsname}</h2>
                 {ausgabenDerKategorie.length === 0 ?
                     (
-                        <p className="kategoriedetail__leer">
+                        <p className="leerhinweis">
                             Im {monatsname} gibt es in dieser Kategorie keine Ausgaben.
                         </p>
                     ) :

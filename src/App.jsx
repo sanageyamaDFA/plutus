@@ -13,17 +13,19 @@ import { findeNachId, ermittleNaechsteId } from './utils/listen'
 import { pruefeZugangsdaten } from './utils/anmeldung'
 import { TESTZUGAENGE } from './data/testzugaenge'
 import './App.css'
-
-const ANGEZEIGTES_JAHR = 2026
-const ANGEZEIGTER_MONAT = 10
+import { ermittleAktuellenMonat, verschiebeMonat } from './utils/datum'
 
 export function App() {
   const [angemeldetesMitgliedId, setAngemeldetesMitgliedId] = useState(null)
   const [verlauf, setVerlauf] = useState([{ seite: SEITEN.UEBERSICHT }])
   const ansicht = verlauf.at(-1)
   const istHauptseite = HAUPTSEITEN.includes(ansicht.seite)
-
+  const [angezeigterMonat, setAngezeigterMonat] = useState(ermittleAktuellenMonat)
   const [ausgaben, setAusgaben] = useState(beispielAusgaben)
+
+  function wechsleMonat(schritte) {
+    setAngezeigterMonat((bisher) => verschiebeMonat(bisher, schritte))
+  }
 
   function oeffneSeite(seite, details = {}) {
     setVerlauf((bisher) => [...bisher, { seite, ...details }])
@@ -81,8 +83,9 @@ export function App() {
             ausgaben={ausgaben}
             kategorien={kategorien}
             mitglieder={mitglieder}
-            jahr={ANGEZEIGTES_JAHR}
-            monat={ANGEZEIGTER_MONAT}
+            jahr={angezeigterMonat.jahr}
+            monat={angezeigterMonat.monat}
+            onMonatWechsel={wechsleMonat}
             onAusgabeAuswahl={(ausgabeId) => oeffneSeite(SEITEN.AUSGABEDETAIL, { ausgabeId })}
             onKategorieAuswahl={oeffneKategorie}
           />
@@ -151,8 +154,8 @@ export function App() {
             ausgaben={ausgaben}
             kategorien={kategorien}
             mitglieder={mitglieder}
-            jahr={ANGEZEIGTES_JAHR}
-            monat={ANGEZEIGTER_MONAT}
+            jahr={angezeigterMonat.jahr}
+            monat={angezeigterMonat.monat}
             onZurueck={geheZurueck}
             onAusgabeAuswahl={(ausgabeId) => oeffneSeite(SEITEN.AUSGABEDETAIL, { ausgabeId })}
           />

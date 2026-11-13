@@ -9,14 +9,8 @@
     color: var(--farbe-text-sekundaer);
 }
 
-.ausgabenliste__leer {
-    margin-top: var(--abstand-6);
-    text-align: center;
-    color: var(--farbe-text-sekundaer);
-}
-
 @media (min-width: 1024px) {
     .ausgabenliste {
-        max-width: 720px;
+        max-width: none;
     }
 }

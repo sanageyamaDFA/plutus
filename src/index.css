@@ -130,3 +130,10 @@ button:focus-visible {
   font-size: var(--schrift-titel);
   font-weight: 600;
 }
+
+.leerhinweis {
+  margin-top: var(--abstand-4);
+  text-align: center;
+  font-size: var(--schrift-normal);
+  color: var(--farbe-text-sekundaer);
+}
