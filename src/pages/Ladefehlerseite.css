@@ -1,0 +1,6 @@
+.ladefehlerseite {
+    display: flex;
+    flex-direction: column;
+    gap: var(--abstand-4);
+    margin-top: 30vh;
+}

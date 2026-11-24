@@ -7,6 +7,7 @@ export function Bestaetigungsdialog({
     titel,
     text,
     bestaetigung,
+    istBeschaeftigt = false,
     onBestaetigen,
     onSchliessen,
 }) {
@@ -34,11 +35,11 @@ export function Bestaetigungsdialog({
             </h2>
             <p className="bestaetigungsdialog__text">{text}</p>
             <div className="bestaetigungsdialog__aktionen">
-                <Button variante="sekundaer" onClick={onSchliessen}>
+                <Button variante="sekundaer" onClick={onSchliessen} disabled={istBeschaeftigt}>
                     Abbrechen
                 </Button>
-                <Button variante="destruktiv" onClick={onBestaetigen}>
-                    {bestaetigung}
+                <Button variante="destruktiv" onClick={onBestaetigen} disabled={istBeschaeftigt}>
+                    {istBeschaeftigt ? 'Wird gelöscht …' : bestaetigung}
                 </Button>
             </div>
         </dialog>

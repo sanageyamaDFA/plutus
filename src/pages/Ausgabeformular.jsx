@@ -3,13 +3,14 @@ import { useId, useState } from 'react'
 import { Aktionsleiste } from '../components/ui/Aktionsleiste'
 import { Button } from '../components/ui/Button'
 import { Eingabefeld } from '../components/ui/Eingabefeld'
+import { Fehlermeldung } from '../components/ui/Fehlermeldung'
 import { Kategoriewahl } from '../components/kategorien/Kategoriewahl'
 import { Segmentwahl } from '../components/auswertung/Segmentwahl'
+import { formuliereFehlermeldung } from '../api/client'
 import { pruefeEingaben } from '../utils/ausgaben'
 import { betragAlsEingabe, leseBetrag } from '../utils/format'
 import { heuteAlsIsoDatum } from '../utils/datum'
 import './Ausgabeformular.css'
-
 
 function erstelleAnfangswerte(ausgabe, kategorien, aktuellesMitgliedId) {
     if (ausgabe) {
@@ -45,6 +46,8 @@ export function Ausgabeformular({
         erstelleAnfangswerte(ausgabe, kategorien, aktuellesMitgliedId),
     )
     const [fehler, setFehler] = useState({})
+    const [istSpeichernd, setIstSpeichernd] = useState(false)
+    const [speicherfehler, setSpeicherfehler] = useState(null)
     const betragId = useId()
     const betragFehlerId = `${betragId}-fehler`
 
@@ -53,7 +56,7 @@ export function Ausgabeformular({
         setFehler((bisher) => ({ ...bisher, [feld]: undefined }))
     }
 
-    function speichere(ereignis) {
+    async function speichere(ereignis) {
         ereignis.preventDefault()
 
         const gefundeneFehler = pruefeEingaben(eingaben)
@@ -62,14 +65,21 @@ export function Ausgabeformular({
             return
         }
 
-        onSpeichern({
-            betrag: leseBetrag(eingaben.betrag),
-            beschreibung: eingaben.beschreibung.trim(),
-            kategorieId: eingaben.kategorieId,
-            datum: eingaben.datum,
-            bezahltVon: eingaben.bezahltVon,
-            notiz: eingaben.notiz.trim(),
-        })
+        setIstSpeichernd(true)
+        setSpeicherfehler(null)
+        try {
+            await onSpeichern({
+                betrag: leseBetrag(eingaben.betrag),
+                beschreibung: eingaben.beschreibung.trim(),
+                kategorieId: eingaben.kategorieId,
+                datum: eingaben.datum,
+                bezahltVon: eingaben.bezahltVon,
+                notiz: eingaben.notiz.trim(),
+            })
+        } catch (fehler) {
+            setSpeicherfehler(formuliereFehlermeldung(fehler))
+            setIstSpeichernd(false)
+        }
     }
 
     const personenOptionen = mitglieder.map((mitglied) => ({
@@ -154,8 +164,12 @@ export function Ausgabeformular({
                 onChange={(ereignis) => aendere('notiz', ereignis.target.value)}
             />
 
+            {speicherfehler && <Fehlermeldung>{speicherfehler}</Fehlermeldung>}
+
             <Aktionsleiste>
-                <Button type="submit">{istBearbeitung ? 'Änderungen speichern' : 'Speichern'}</Button>
+                <Button type="submit" disabled={istSpeichernd}>
+                    {istSpeichernd ? 'Wird gespeichert …' : istBearbeitung ? 'Änderungen speichern' : 'Speichern'}
+                </Button>
             </Aktionsleiste>
         </form>
     )

@@ -3,7 +3,9 @@ import { Bestaetigungsdialog } from '../components/ui/Bestaetigungsdialog'
 import { Aktionsleiste } from '../components/ui/Aktionsleiste'
 import { Avatar } from '../components/ui/Avatar'
 import { Button } from '../components/ui/Button'
+import { Fehlermeldung } from '../components/ui/Fehlermeldung'
 import { KategorieSymbol } from '../components/kategorien/KategorieSymbol'
+import { formuliereFehlermeldung } from '../api/client'
 import { ZurueckButton } from '../components/ui/ZurueckButton'
 import { formatiereDatum } from '../utils/datum'
 import { formatiereEuro } from '../utils/format'
@@ -21,8 +23,22 @@ function Detailzeile({ bezeichnung, children }) {
 
 export function Ausgabedetail({ ausgabe, kategorien, mitglieder, onZurueck, onBearbeiten, onLoeschen }) {
     const [istLoeschdialogOffen, setIstLoeschdialogOffen] = useState(false)
+    const [istLoeschend, setIstLoeschend] = useState(false)
+    const [loeschfehler, setLoeschfehler] = useState(null)
     const kategorie = findeNachId(kategorien, ausgabe.kategorieId)
     const person = findeNachId(mitglieder, ausgabe.bezahltVon)
+
+    async function bestaetigeLoeschen() {
+        setIstLoeschend(true)
+        setLoeschfehler(null)
+        try {
+            await onLoeschen()
+        } catch (fehler) {
+            setLoeschfehler(formuliereFehlermeldung(fehler))
+            setIstLoeschend(false)
+            setIstLoeschdialogOffen(false)
+        }
+    }
 
     return (
         <>
@@ -46,6 +62,8 @@ export function Ausgabedetail({ ausgabe, kategorien, mitglieder, onZurueck, onBe
                 {ausgabe.notiz && <Detailzeile bezeichnung="Notiz">{ausgabe.notiz}</Detailzeile>}
             </dl>
 
+            {loeschfehler && <Fehlermeldung>{loeschfehler}</Fehlermeldung>}
+
             <Aktionsleiste>
                 <Button onClick={onBearbeiten}>Bearbeiten</Button>
                 <Button variante="destruktiv-dezent" onClick={() => setIstLoeschdialogOffen(true)}>
@@ -58,7 +76,8 @@ export function Ausgabedetail({ ausgabe, kategorien, mitglieder, onZurueck, onBe
                 titel="Ausgabe löschen?"
                 text={`Möchtest du „${ausgabe.beschreibung} – ${formatiereEuro(ausgabe.betrag)}“ wirklich löschen? Die Ausgabe wird für alle Mitglieder des Haushalts entfernt.`}
                 bestaetigung={"Löschen"}
-                onBestaetigen={onLoeschen}
+                istBeschaeftigt={istLoeschend}
+                onBestaetigen={bestaetigeLoeschen}
                 onSchliessen={() => setIstLoeschdialogOffen(false)}
             />
         </>

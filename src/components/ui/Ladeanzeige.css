@@ -1,0 +1,24 @@
+.ladeanzeige {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--abstand-4);
+    margin-top: 30vh;
+    color: var(--farbe-text-sekundaer);
+}
+
+/* Derselbe Ring wie im Logo der Anmeldeseite, hier drehend */
+.ladeanzeige__ring {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--farbe-beige);
+    border-top-color: var(--farbe-salbei);
+    border-radius: 50%;
+    animation: ladeanzeige-drehen 0.9s linear infinite;
+}
+
+@keyframes ladeanzeige-drehen {
+    to {
+        transform: rotate(360deg);
+    }
+}

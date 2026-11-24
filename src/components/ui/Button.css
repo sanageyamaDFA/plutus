@@ -32,3 +32,8 @@
     background-color: var(--farbe-flaeche);
     color: var(--farbe-fehler);
 }
+
+.button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

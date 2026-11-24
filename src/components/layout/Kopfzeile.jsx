@@ -6,7 +6,7 @@ export function Kopfzeile({ haushaltsName, mitglieder }) {
 
     return (
         <header className="kopfzeile">
-            <button className="kopfzeile__menue" aria_label="Menü öffnen">
+            <button className="kopfzeile__menue" aria-label="Menü öffnen">
                 <Menu />
             </button>
 

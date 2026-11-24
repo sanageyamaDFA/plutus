@@ -24,7 +24,7 @@ export function pruefeEingaben(eingaben) {
 }
 
 function vergleicheNeuesteZuerst(a, b) {
-    return b.datum.localeCompare(a.datum) || b.id - a.id
+    return b.datum.localeCompare(a.datum) || b.erstelltAm.localeCompare(a.erstelltAm)
 }
 
 export function gruppiereNachDatum(ausgaben) {

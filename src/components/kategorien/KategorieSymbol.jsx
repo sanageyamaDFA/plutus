@@ -5,7 +5,7 @@ export function KategorieSymbol({ symbol, farbe, groesse = 'normal' }) {
     const Symbol = findeSymbol(symbol)
 
     return (
-        <span className="kategorie-symbol kategorie-symbol--${groesse}" style={{ backgroundColor: alsCSSFarbe(farbe) }}>
+        <span className={`kategorie-symbol kategorie-symbol--${groesse}`} style={{ backgroundColor: alsCSSFarbe(farbe) }}>
             <Symbol />
         </span>)
 }

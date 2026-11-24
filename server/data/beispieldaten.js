@@ -1,8 +1,8 @@
 export const haushalte = [{ id: 'h1', name: 'Unser Haushalt' }]
 
 export const mitglieder = [
-    { id: 'm1', haushaltId: 'h1', name: 'Leandro', initiale: 'L', farbe: 'salbei', email: 'leandro@beispiel.de' },
-    { id: 'm2', haushaltId: 'h1', name: 'Max', initiale: 'M', farbe: 'sand', email: 'max@beispiel.de' },
+    { id: 'm1', haushaltId: 'h1', name: 'Leandro', initial: 'L', farbe: 'salbei', email: 'leandro@beispiel.de' },
+    { id: 'm2', haushaltId: 'h1', name: 'Max', initial: 'M', farbe: 'sand', email: 'max@beispiel.de' },
 ]
 
 export const kategorien = [
