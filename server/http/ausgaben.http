@@ -1,0 +1,82 @@
+@basis = http://localhost:3001
+
+### Haushalt mit Mitgliedern
+GET {{basis}}/haushalt
+
+### Kategorien
+GET {{basis}}/kategorien
+
+### Alle Ausgaben
+GET {{basis}}/ausgaben
+
+### Eine Ausgabe
+GET {{basis}}/ausgaben/a1
+
+### Unbekannte ID (erwartet 404)
+GET {{basis}}/ausgaben/gibt-es-nicht
+
+### Ausgabe anlegen (erwartet 201)
+POST {{basis}}/ausgaben
+Content-Type: application/json
+
+{
+  "betragInCent": 1250,
+  "beschreibung": "Bäckerei",
+  "kategorieId": "k1",
+  "datum": "2026-11-24",
+  "bezahltVon": "m1",
+  "notiz": ""
+}
+
+### Ungültige Eingaben (erwartet 400 mit Meldungen pro Feld)
+POST {{basis}}/ausgaben
+Content-Type: application/json
+
+{
+  "betragInCent": -5,
+  "beschreibung": "",
+  "kategorieId": "k99",
+  "datum": "24.11.2026",
+  "bezahltVon": "m1"
+}
+
+### Zusätzliche Felder werden ignoriert (erwartet 201, haushaltId bleibt h1)
+POST {{basis}}/ausgaben
+Content-Type: application/json
+
+{
+  "betragInCent": 500,
+  "beschreibung": "Versuch",
+  "kategorieId": "k6",
+  "datum": "2026-11-24",
+  "bezahltVon": "m2",
+  "haushaltId": "h2"
+}
+
+### Kaputtes JSON (erwartet 400)
+POST {{basis}}/ausgaben
+Content-Type: application/json
+
+{ "betragInCent": 
+
+### Ausgabe ändern (erwartet 200)
+PUT {{basis}}/ausgaben/a1
+Content-Type: application/json
+
+{
+  "betragInCent": 5000,
+  "beschreibung": "Rewe",
+  "kategorieId": "k1",
+  "datum": "2026-11-12",
+  "bezahltVon": "m1",
+  "notiz": "Wocheneinkauf"
+}
+
+### Ausgabe löschen (erwartet 204)
+DELETE {{basis}}/ausgaben/a2
+
+### Dieselbe Ausgabe erneut löschen (erwartet 404)
+DELETE {{basis}}/ausgaben/a2
+
+### Unbekannter Endpunkt (erwartet 404)
+GET {{basis}}/gibt-es-nicht
