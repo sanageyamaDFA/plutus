@@ -1,11 +1,11 @@
-.monatsauswahl {
+.zeitraumnavigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: var(--abstand-3);
 }
 
-.monatsauswahl__pfeil {
+.zeitraumnavigation__pfeil {
   display: grid;
   place-items: center;
   width: 32px;
@@ -14,12 +14,12 @@
   color: var(--farbe-text-sekundaer);
 }
 
-.monatsauswahl__pfeil svg {
+.zeitraumnavigation__pfeil svg {
   width: 20px;
   height: 20px;
 }
 
-.monatsauswahl__monat {
+.zeitraumnavigation__monat {
   font-size: var(--schrift-normal);
   font-weight: 500;
 }

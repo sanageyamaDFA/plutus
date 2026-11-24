@@ -11,21 +11,22 @@ import { Kategoriedetail } from './pages/Kategoriedetail'
 import { Anmeldeseite } from './pages/Anmeldeseite'
 import { findeNachId, ermittleNaechsteId } from './utils/listen'
 import { pruefeZugangsdaten } from './utils/anmeldung'
+import { heuteAlsIsoDatum } from './utils/datum'
+import { ZEITRAUMARTEN } from './utils/zeitraum'
 import { TESTZUGAENGE } from './data/testzugaenge'
 import './App.css'
-import { ermittleAktuellenMonat, verschiebeMonat } from './utils/datum'
 
 export function App() {
   const [angemeldetesMitgliedId, setAngemeldetesMitgliedId] = useState(null)
   const [verlauf, setVerlauf] = useState([{ seite: SEITEN.UEBERSICHT }])
   const ansicht = verlauf.at(-1)
   const istHauptseite = HAUPTSEITEN.includes(ansicht.seite)
-  const [angezeigterMonat, setAngezeigterMonat] = useState(ermittleAktuellenMonat)
   const [ausgaben, setAusgaben] = useState(beispielAusgaben)
+  const [zeitraum, setZeitraum] = useState(() => ({
+    art: ZEITRAUMARTEN.MONAT,
+    bezugsdatum: heuteAlsIsoDatum(),
+  }))
 
-  function wechsleMonat(schritte) {
-    setAngezeigterMonat((bisher) => verschiebeMonat(bisher, schritte))
-  }
 
   function oeffneSeite(seite, details = {}) {
     setVerlauf((bisher) => [...bisher, { seite, ...details }])
@@ -83,9 +84,8 @@ export function App() {
             ausgaben={ausgaben}
             kategorien={kategorien}
             mitglieder={mitglieder}
-            jahr={angezeigterMonat.jahr}
-            monat={angezeigterMonat.monat}
-            onMonatWechsel={wechsleMonat}
+            zeitraum={zeitraum}
+            onZeitraumAenderung={setZeitraum}
             onAusgabeAuswahl={(ausgabeId) => oeffneSeite(SEITEN.AUSGABEDETAIL, { ausgabeId })}
             onKategorieAuswahl={oeffneKategorie}
           />
@@ -154,8 +154,7 @@ export function App() {
             ausgaben={ausgaben}
             kategorien={kategorien}
             mitglieder={mitglieder}
-            jahr={angezeigterMonat.jahr}
-            monat={angezeigterMonat.monat}
+            zeitraum={zeitraum}
             onZurueck={geheZurueck}
             onAusgabeAuswahl={(ausgabeId) => oeffneSeite(SEITEN.AUSGABEDETAIL, { ausgabeId })}
           />

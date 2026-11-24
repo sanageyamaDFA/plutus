@@ -6,14 +6,14 @@ const VOLLSTAENDIGES_DATUM = new Intl.DateTimeFormat('de-DE', {
     year: 'numeric',
 })
 
-function alsIsoDatum(datum) {
+export function alsIsoDatum(datum) {
     const jahr = datum.getFullYear()
     const monat = String(datum.getMonth() + 1).padStart(2, '0')
     const tag = String(datum.getDate()).padStart(2, '0')
     return `${jahr}-${monat}-${tag}`
 }
 
-function ausIsoDatum(isoDatum) {
+export function ausIsoDatum(isoDatum) {
     const [jahr, monat, tag] = isoDatum.split('-').map(Number)
     return new Date(jahr, monat - 1, tag)
 }

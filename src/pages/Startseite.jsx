@@ -1,10 +1,9 @@
 import { Ringdiagramm } from '../components/auswertung/Ringdiagramm'
 import { KategorieEintrag } from '../components/kategorien/KategorieEintrag'
-import { Monatsauswahl } from '../components/auswertung/Monatsauswahl'
-import { Zeitraumauswahl } from '../components/auswertung/Zeitraumauswahl'
 import { AusgabenKarte } from '../components/ausgaben/AusgabenKarte'
-import { formatiereMonatsname, formatiereMonatUndJahr } from '../utils/datum'
-import { ermittleNeuesteAusgaben, filtereNachMonat } from '../utils/ausgaben'
+import { ermittleNeuesteAusgaben, filtereNachZeitraum } from '../utils/ausgaben'
+import { Zeitraumsteuerung } from '../components/auswertung/Zeitraumsteuerung'
+import { beschreibeZeitraum } from '../utils/zeitraum'
 import {
     berechneAnteil,
     berechneGesamtbetrag,
@@ -12,35 +11,30 @@ import {
 } from '../utils/berechnungen'
 import './Startseite.css'
 
+
 const ANZAHL_LETZTE_AUSGABEN = 5
 
-export function Startseite({ ausgaben, kategorien, mitglieder, jahr, monat, onMonatWechsel, onAusgabeAuswahl, onKategorieAuswahl }) {
+export function Startseite({ ausgaben, kategorien, mitglieder, zeitraum, onZeitraumAenderung, onAusgabeAuswahl, onKategorieAuswahl }) {
 
-    const ausgabenImMonat = filtereNachMonat(ausgaben, jahr, monat)
-    const kategorieSummen = berechneKategorieSummen(ausgabenImMonat, kategorien)
+    const ausgabenImZeitraum = filtereNachZeitraum(ausgaben, zeitraum)
+    const kategorieSummen = berechneKategorieSummen(ausgabenImZeitraum, kategorien)
         .filter((kategorie) => kategorie.betrag > 0)
         .toSorted((a, b) => b.betrag - a.betrag)
     const gesamtbetrag = berechneGesamtbetrag(kategorieSummen)
-    const letzteAusgaben = ermittleNeuesteAusgaben(ausgabenImMonat, ANZAHL_LETZTE_AUSGABEN)
-    const monatsname = formatiereMonatsname(jahr, monat)
+    const letzteAusgaben = ermittleNeuesteAusgaben(ausgabenImZeitraum, ANZAHL_LETZTE_AUSGABEN)
 
 
     return (
         <div className="startseite">
             <h1 className="visuell-versteckt">Übersicht</h1>
             <div className="startseite__auswertung">
-                <Zeitraumauswahl aktiverZeitraum="Monat" />
-                <Monatsauswahl
-                    beschriftung={formatiereMonatUndJahr(jahr, monat)}
-                    onZurueck={() => onMonatWechsel(-1)}
-                    onWeiter={() => onMonatWechsel(1)}
-                />
-                <Ringdiagramm eintraege={kategorieSummen} beschriftung={`Ausgaben im ${monatsname}`} />
+                <Zeitraumsteuerung zeitraum={zeitraum} onAenderung={onZeitraumAenderung} />
+                <Ringdiagramm eintraege={kategorieSummen} beschriftung={`Ausgaben ${beschreibeZeitraum(zeitraum)}`} />
             </div>
             <section className="kategorien startseite__kategorien">
                 <h2 className="abschnittstitel">Kategorien</h2>
                 {kategorieSummen.length === 0 ? (
-                    <p className="leerhinweis">Im {monatsname} gibt es noch keine Ausgaben.</p>
+                    <p className="leerhinweis">Für diesen Zeitraum gibt es noch keine Ausgaben.</p>
                 ) : (
                     <ul className="kartenliste startseite__kategorienliste">
                         {kategorieSummen.map((kategorie) => (

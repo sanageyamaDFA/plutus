@@ -1,4 +1,5 @@
 import { leseBetrag } from "./format"
+import { berechneGrenzen } from './zeitraum'
 
 export function pruefeEingaben(eingaben) {
     const fehler = {}
@@ -44,9 +45,7 @@ export function ermittleNeuesteAusgaben(ausgaben, anzahl) {
     return sortiereNeuesteZuerst(ausgaben).slice(0, anzahl)
 }
 
-export function filtereNachMonat(ausgaben, jahr, monat) {
-    return ausgaben.filter((ausgabe) => {
-        const [ausgabeJahr, ausgabeMonat] = ausgabe.datum.split('-').map(Number)
-        return ausgabeJahr === jahr && ausgabeMonat === monat
-    })
+export function filtereNachZeitraum(ausgaben, zeitraum) {
+    const { start, ende } = berechneGrenzen(zeitraum)
+    return ausgaben.filter((ausgabe) => ausgabe.datum >= start && ausgabe.datum < ende)
 }
